@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+<section style="font-family: Oswald, sans-serif;">
+    <div class="box">
+        <div class="form">
+            <h2>Registration</h2>
+            <form (ngSubmit)="addCustomer()">
+                <div class="inputbox">
+                    <input type="text" id="firstName" name="firstName" [(ngModel)]="form.firstName" placeholder="First name">
+                    <span class="label-danger" id="firstNameError">Not Empty!Maximum 30 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="lastName" name="lastName" [(ngModel)]="form.lastName" placeholder="Last name">
+                    <span class="label-danger" id="lastNameError">Not Empty!Maximum 30 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="email" name="email" [(ngModel)]="form.email" placeholder="Email">
+                    <span class="label-danger" id="emailError">Provide valid email!Maximum 40 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="password" id="password" name="password" [(ngModel)]="form.password" placeholder="Password">
+                    <span class="label-danger" id="passwordError">Not Empty!Minimum 6 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="password" id="confirmpass" name="confirmPass"  placeholder="Confirm password">
+                </div>
+                <h2>Billing Address</h2>
+                <div class="inputbox">
+                    <input type="text" id="billingAddress" name="billingAddress" [(ngModel)]="form.billingAddress"  placeholder="Address">
+                    <span class="label-danger" id="billingAddressError">Not Empty!Maximum 75 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="billingCity" name="billingCity" [(ngModel)]="form.billingCity" placeholder="City">
+                    <span class="label-danger" id="billingCityError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="billingState" name="billingState" [(ngModel)]="form.billingState" placeholder="State">
+                    <span class="label-danger" id="billingStateError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="billingPostcode" name="billingPostcode" [(ngModel)]="form.billingPostcode" placeholder="Post Code">
+                    <span class="label-danger" id="billingPostcodeError">Minimum 5 Maximum 10 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="billingCountry" name="billingCountry" [(ngModel)]="form.billingCountry" placeholder="Country">
+                    <span class="label-danger" id="billingCountryError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+                <h2>Shipping Address</h2>
+                <div class="inputbox">
+                    <input type="text" id="shippingAddress" name="shippingAddress" [(ngModel)]="form.shippingAddress" placeholder="Address">
+                    <span class="label-danger" id="shippingAddressError">Not Empty!Maximum 75 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="shippingCity" name="shippingCity" [(ngModel)]="form.shippingCity" placeholder="City">
+                    <span class="label-danger" id="shippingCityError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="shippingState" name="shippingState" [(ngModel)]="form.shippingState" placeholder="State">
+                    <span class="label-danger" id="shippingStateError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="shippingPostcode" name="shippingPostcode" [(ngModel)]="form.shippingPostcode" placeholder="Post Code">
+                    <span class="label-danger" id="shippingPostcodeError">Minimum 5 and Maximum 10 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="shippingCountry" name="shippingCountry" [(ngModel)]="form.shippingCountry" placeholder="Country">
+                    <span class="label-danger" id="shippingCountryError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+                <h2>Phone</h2>
+                <div class="inputbox">
+                    <input type="text" id="customerPhone" name="customerPhone" [(ngModel)]="form.customerPhone" placeholder="Phone">
+                    <span class="label-danger" id="customerPhoneError">Minimum 9 Maximum 15 letters allowed!</span>
+                </div>
+                <div class="inputbox">
+                    <input type="submit" value="Submit" />
+                </div>
+
+            </form>
+            <p><a (click)="redirectLogin()" onmouseover="this.style='cursor: pointer;'">Have Account?</a></p>
+        </div>
+    </div>
+</section>

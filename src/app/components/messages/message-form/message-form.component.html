@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<section style="font-family: Oswald, sans-serif;">
+    <div class="box">
+        <div class="form">
+            <h2>Message Form</h2>
+            <h5>Send us a message</h5>
+            <form (ngSubmit)="sendMessage()">
+                <div class="inputbox">
+                    <textarea type="text" id="text" name="text" [(ngModel)]="message.text" placeholder="Message text">
+                    </textarea>
+                    <br>
+                    <span class="label-danger" id="textError">Not Empty!Maximum 255 letters allowed!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="submit" value="Submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+       

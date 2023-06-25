@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<section>
+	<div class="container main-content">
+		<div class="title">
+			<h4>orders List</h4>
+		</div>
+
+		<table class="table table-bordered mt-5" id="listingTable">
+			<thead>
+				<tr>
+					<th class="text-center">Full Name</th>
+					<th class="text-center">Email</th>
+					<th class="text-center">Order Time</th>
+					<th class="text-center">Actions</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<ng-template ngFor let-tempOrder [ngForOf]="orderList">
+					<ng-template ngFor let-tempCustomer [ngForOf]="customerList">
+						<ng-template ngFor let-tempUser [ngForOf]="userList">
+							<ng-container *ngIf="tempOrder.customerId === tempCustomer.customerId">
+								<ng-container *ngIf="tempCustomer.userId === tempUser.id">
+									<tr>
+										<td>{{ tempUser.firstName }} {{ tempUser.lastName }}</td>
+										<td>{{ tempUser.email }}</td>
+										<td>{{ tempOrder.createdAt }}</td>
+										<td>
+											<button (click)="redirectOrderDetails(tempOrder.orderId)">Details</button>
+										</td>
+									</tr>
+								</ng-container>
+							</ng-container>
+						</ng-template>
+					</ng-template>
+				</ng-template>
+			</tbody>
+        </table>
+	</div>
+</section>

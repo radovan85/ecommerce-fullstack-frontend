@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<section>
+    <div class="container main-content">
+        <div class="title">
+            <h4>cart</h4>
+        </div>
+
+        <div class="mb-4">
+            <button class="btn btn-secondary" (click)="redirectCheckout()">Checkout</button>
+            <button class="btn btn-secondary ml-4" (click)="clearCart()">Clear</button>
+        </div>
+
+        <table class="table table-bordered mb-4" id="listingTable">
+            <thead>
+                <tr>
+                    <th class="text-center">Product</th>
+                    <th class="text-center">Unit Price</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Discount</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <ng-template ngFor let-tempProduct [ngForOf]="productList">
+                    <ng-template ngFor let-tempItem [ngForOf]="cartItems">
+                        <ng-container *ngIf="tempItem.productId === tempProduct.productId">
+                            <tr>
+                                <td>{{ tempProduct.productName }}</td>
+                                <td>
+                                    <span>&euro;&#160;</span>
+                                    <span [innerHTML]="getNumber(tempProduct.productPrice)"></span>
+                                </td>
+                                <td>{{ tempItem.quantity }}</td>
+                                <td>
+                                    <span [innerHTML]="getNumber(tempProduct.discount)"></span>
+                                    <span>&#160;%</span>
+                                </td>
+                                <td>
+                                    <span>&euro;&#160;</span>
+                                    <span [innerHTML]="getNumber(tempItem.price)"></span>
+                                </td>
+                                <td>
+                                    <button (click)="deleteItem(tempItem.cartItemId)">Remove</button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </ng-template>
+                </ng-template>
+            </tbody>
+        </table>
+
+        <div class="float-right mt-5" >
+            <h3>Cart Price: <span [innerHTML]="getNumber(cart.cartPrice)"></span> &euro;</h3>
+        </div>
+    </div>
+</section>

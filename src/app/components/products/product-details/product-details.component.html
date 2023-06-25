@@ -1,0 +1,95 @@
+<app-navbar></app-navbar>
+<section>
+    <div class="container main-content">
+        <div class="title">
+            <h4>product details</h4>
+        </div>
+
+        <table class="table table-bordered">
+            <tbody>
+                <ng-template ngFor let-tempCategory [ngForOf]="categoryList">
+                    <ng-container *ngIf="tempCategory.productCategoryId === tempProduct.productCategoryId">
+                        <tr>
+                            <td>Preview</td>
+                            <td>
+                                <img (error)="tempProduct.imageUrl = 'https://t3.ftcdn.net/jpg/00/36/94/26/360_F_36942622_9SUXpSuE5JlfxLFKB1jHu5Z07eVIWQ2W.jpg'"
+                                    src="{{ tempProduct.imageUrl }}" style="width: 30%;height: 150px;" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Product Id</td>
+                            <td>{{ tempProduct.productId }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Product Name</td>
+                            <td>{{ tempProduct.productName }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Product Brand</td>
+                            <td>{{ tempProduct.productBrand }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Product Model</td>
+                            <td>{{ tempProduct.productModel }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Product Category</td>
+                            <td>{{ tempCategory.name }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Product Description</td>
+                            <td>{{ tempProduct.productDescription }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Product Price</td>
+                            <td>
+                                <span>&euro;&#160;</span>
+                                <span [innerHTML]="getNumber(tempProduct.productPrice)"></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Product Status</td>
+                            <td>{{ tempProduct.productStatus }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Stock available</td>
+                            <ng-container *ngIf="getNumber(tempProduct.unitStock) === getNumber(0); else elseBlock">
+                                <td>
+                                    <span class="label-danger">Out of stock!</span>
+                                </td>
+                            </ng-container>
+                            <ng-template #elseBlock>
+                                <td>{{ tempProduct.unitStock }}</td>
+                            </ng-template>
+                        </tr>
+
+                        <tr>
+                            <td>Discount</td>
+                            <td>
+                                <span [innerHTML]="getNumber(tempProduct.discount)"></span>
+                                <span>&#160;%</span>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </ng-template>
+            </tbody>
+        </table>
+        <div class="text-center mt-5">
+            <button class="btn btn-secondary" (click)="redirectAllProducts()">All Products</button>
+            <ng-template [ngIf]="hasAuthorityUser">
+                <ng-template [ngIf]="getNumber(tempProduct.unitStock) > getNumber(0)">
+                <button class="btn btn-secondary ml-3" (click)="addToCart(tempProduct.productId)">Add To Cart</button>
+            </ng-template>
+            </ng-template>
+        </div>
+    </div>
+</section>

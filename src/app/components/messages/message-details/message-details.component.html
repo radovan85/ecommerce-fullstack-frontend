@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<section>
+    <div class="container main-content">
+        <div class="title">
+            <h4>message details</h4>
+        </div>
+
+        <div class="text-center">
+            <ng-template ngFor let-tempUser [ngForOf]="userList">
+                <ng-template ngFor let-tempCustomer [ngForOf]="customerList">
+                    <ng-container *ngIf="tempCustomer.userId === tempUser.id">
+                        <ng-container *ngIf="tempCustomer.customerId === tempMessage.customerId">
+                            <h1>Message from {{ tempUser.firstName }} {{ tempUser.lastName }}</h1>
+                            Text: <span>{{ tempMessage.text }}</span><br>
+                            Created: <span>{{ tempMessage.createdAtStr }}</span>
+                            <div class="mt-5">
+                                <button class="btn btn-secondary" (click)="redirectAllMessages()">All Messages
+                                </button>
+                                <button class="ml-4 btn btn-dark"
+                                    (click)="deleteMessage(tempMessage.adminMessageId)">Delete
+                                </button>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </ng-template>
+            </ng-template>
+        </div>

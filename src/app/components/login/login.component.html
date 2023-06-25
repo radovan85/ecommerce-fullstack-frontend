@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<section style="font-family: Oswald, sans-serif;">
+  <div class="box">
+   <div class="form">
+        <span class="label-danger" id="alertMessage">Invalid username or password!</span>
+       <h2>Login</h2>
+       <form (ngSubmit)="login()"> <div class="inputbox">
+           <input type="text" [(ngModel)]="authRequest.username" placeholder="Email">
+           <img src="assets/images/login/user.jpg
+           " alt="">
+       </div>
+       <div class="inputbox">
+           <input type="password" [(ngModel)]="authRequest.password" placeholder="Password">
+
+           <img  src="assets/images/login/lock.png
+           " alt="">
+       </div>
+        <div class="inputbox">
+           <input type="submit" value="Login" />
+       </div> 
+   </form>
+   <p><a onmouseover="this.style='cursor: pointer;'" (click)="redirectRegister()">Need an Account?</a></p>
+   </div>
+  </div>
+</section>
+    
+

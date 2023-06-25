@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<section style="font-family: Oswald, sans-serif;">
+    <div class="box">
+        <div class="form">
+            <h2>phone confirmation</h2>
+            <form (ngSubmit)="updateCustomer()">
+                <div class="inputbox">
+                    <input type="text" id="customerPhone" name="customerPhone" [(ngModel)]="customer.customerPhone"
+                        placeholder="Customer Phone">
+                    <span class="label-danger" id="customerPhoneError">Minimum 9 Maximum 15 letters allowed!</span>
+                </div>
+
+                
+
+                <div class="inputbox">
+                    <button class="mr-3" (click)="redirectConfirmShipping()"><span [innerHTML]="'< Back'"></span></button>
+                    <button class="mr-3" (click)="redirectCancelOrder()">Cancel</button>
+                    <button type="submit">Continue ></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

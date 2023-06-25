@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<section style="font-family: Oswald, sans-serif;">
+    <div class="box">
+        <div class="form">
+            <h2>Category Update Form</h2>
+            <form (ngSubmit)="updateCategory()">
+                <div class="inputbox">
+                    <input type="text" id="name" name="name" [(ngModel)]="tempCategory.name" placeholder="Category name">
+                    <span class="label-danger" id="nameError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="submit" value="Update" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+       

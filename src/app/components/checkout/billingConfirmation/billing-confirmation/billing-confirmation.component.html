@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<section style="font-family: Oswald, sans-serif;">
+    <div class="box">
+        <div class="form">
+            <h2>Billing address confirmation</h2>
+            <form (ngSubmit)="updateBillingAddress()">
+                <div class="inputbox">
+                    <input type="text" id="address" name="address" [(ngModel)]="billingAddress.address" placeholder="Address">
+                    <span class="label-danger" id="addressError">Not Empty!Maximum 75 letters allowed!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="text" id="city" name="city" [(ngModel)]="billingAddress.city" placeholder="City">
+                    <span class="label-danger" id="cityError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="text" id="state" name="state" [(ngModel)]="billingAddress.state" placeholder="State">
+                    <span class="label-danger" id="stateError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="text" id="postcode" name="postcode" [(ngModel)]="billingAddress.postcode" placeholder="Post code">
+                    <span class="label-danger" id="postcodeError">Minimum 5 and Maximum 10 letters allowed!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="text" id="country" name="country" [(ngModel)]="billingAddress.country" placeholder="Country">
+                    <span class="label-danger" id="countryError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+
+                <div class="inputbox">
+                    <button class="mr-3" (click)="redirectCancelOrder()">Cancel</button>
+                    <button type="submit">Continue ></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+       

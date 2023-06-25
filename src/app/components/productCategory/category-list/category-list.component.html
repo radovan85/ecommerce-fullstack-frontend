@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<section>
+    <div class="container main-content">
+        <div class="title">
+            <h4>categories list</h4>
+        </div>
+
+        <div class="mb-4">
+            <button class="btn btn-secondary" (click)="redirectAddCategory()">Add Category</button>
+        </div>
+
+        <table class="table-bordered" id="listingTable">
+            <thead>
+                <tr>
+                    <th class="text-center">Category Id</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let tempCategory of categoryList">
+                    <td>{{ tempCategory.productCategoryId }}</td>
+                    <td>{{ tempCategory.name }}</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Actions</button>
+                            <div class="dropdown-menu">
+
+                                <button class="dropdown-item btn-options" 
+                                    (click)="redirectUpdateCategory(tempCategory.productCategoryId)">
+                                    Update
+                                </button>
+
+                                <button class="dropdown-item btn-options" 
+                                    (click)="deleteCategory(tempCategory.productCategoryId)">
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

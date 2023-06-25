@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<section>
+	<div class="container main-content">
+		<div class="title">
+			<h4>Customers List</h4>
+		</div>
+
+		<table class="table table-bordered" id="listingTable">
+			<thead>
+				<tr>
+					<th class="text-center">Customer Id</th>
+					<th class="text-center">First Name</th>
+					<th class="text-center">Last Name</th>
+					<th class="text-center">Email</th>
+					<th class="text-center">Actions</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<ng-template ngFor let-tempCustomer [ngForOf]="customerList">
+					<ng-template ngFor let-tempUser [ngForOf]="userList">
+						<ng-container *ngIf="tempCustomer.userId === tempUser.id">
+						<tr>
+							<td>{{ tempCustomer.customerId }}</td>
+							<td>{{ tempUser.firstName }}</td>
+							<td>{{ tempUser.lastName }}</td>
+							<td>{{ tempUser.email }}</td>
+							<td>
+								<div class="dropdown">
+                                    <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Actions</button>
+                                    <div class="dropdown-menu">
+
+                                        <button class="dropdown-item btn-options" 
+                                            (click)="redirectCustomerDetails(tempCustomer.customerId)">
+                                            Details
+                                        </button>
+
+                                        <button class="dropdown-item btn-options" 
+                                            (click)="deleteCustomer(tempCustomer.customerId)">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+							</td>
+						</tr>
+					</ng-container>
+				</ng-template>
+				</ng-template>
+			</tbody>
+		</table>
+	</div>
+</section>

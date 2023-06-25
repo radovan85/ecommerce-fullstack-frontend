@@ -1,0 +1,73 @@
+section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(-30deg, #03a9f4, 0%, #3a78b7 50%, #262626 50%, #607d8b 100%);
+  animation: animate 10s linear infinite;
+  filter: hue-rotate(120deg);
+  font-family: Oswald, serif;
+}
+
+
+section table {
+  color: #c2bfbf;
+
+}
+
+section table thead {
+  text-align: center;
+  vertical-align: middle;
+}
+
+section table tbody {
+  text-align: center;
+  vertical-align: middle;
+}
+
+section table tbody tr {
+  transition: color 0.3s;
+}
+
+section table tbody tr:hover {
+  color: #d7e659;
+}
+
+section h4 {
+  font-size: 25px;
+}
+
+.main-content {
+  margin-top: 170px;
+  margin-left: 50px;
+  color: #c2bfbf;
+  margin-bottom: 100px;
+}
+
+.title {
+  text-align: center;
+  color: aquamarine;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+
+.btn-options {
+  background-color: #262626;
+  color: grey;
+  transition: background-color 0.3s;
+}
+
+.btn-options:hover {
+  background-color: #b4fdf5;
+}
+
+@keyframes animate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    filter: hue-rotate(360);
+  }
+}

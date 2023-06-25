@@ -1,0 +1,26 @@
+<div class="header">
+
+    <a href="#"> <img src="assets/images/logo.png" alt="logo image" class="logo" />
+    </a>
+
+    <ul class="menu">
+        <a (click)="redirectHome()"> Home </a>
+        <a (click)="redirectAbout()"> About </a>
+        <ng-template [ngIf]="hasAuthorityAdmin">
+            <a (click)="redirectAdmin()"> Admin </a>
+        </ng-template>
+        <ng-template [ngIf]="hasAuthorityUser">
+            <a (click)="redirectAllProducts()"> Products </a>
+            <a (click)="redirectMessageForm()">message</a>
+            <a (click)="redirectCart()">cart</a>
+        </ng-template>
+        <ng-template [ngIf]="!isAuthenticated">
+        <a (click)="redirectLogin()"> Login </a>
+        </ng-template>
+        <ng-template [ngIf]="isAuthenticated">
+            <a>{{ authUser.email }}</a>
+            <a (click)="logout()"> Logout </a>
+        </ng-template>
+
+    </ul>
+</div>

@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+<section style="font-family: Oswald, sans-serif;">
+    <div class="box">
+        <div class="form">
+            <h2>Product Update Form</h2>
+            <form (ngSubmit)="updateProduct()">
+                <div class="inputbox">
+                    <input type="text" id="productName" name="productName" [(ngModel)]="product.productName"
+                        placeholder="Product name">
+                    <span class="label-danger" id="productNameError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="text" id="productBrand" name="productBrand" [(ngModel)]="product.productBrand"
+                        placeholder="Product brand">
+                    <span class="label-danger" id="productBrandError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="text" id="productModel" name="productModel" [(ngModel)]="product.productModel"
+                        placeholder="Product model">
+                    <span class="label-danger" id="productModelError">Not Empty!Maximum 40 letters allowed!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="text" id="productPrice" name="productPrice" [(ngModel)]="product.productPrice"
+                        placeholder="Product price" (keypress)="validateNumber($event)" >
+                    <span class="label-danger" id="productPriceError">Please provide valid price!Minimum 10!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="text" id="unitStock" name="unitStock" [(ngModel)]="product.unitStock"
+                        placeholder="Unit Stock" (keypress)="validateNumber($event)" >
+                    <span class="label-danger" id="unitStockError">Please provide unit stock!</span>
+                </div>
+
+
+                <div class="mb-3">
+                    <div style="display: inline-flex;" *ngFor="let item of checklist">
+                        <input type="checkbox" [value]="item.value" [checked]="item.isSelected"
+                            (change)="isAllSelected(item)" />
+                        {{item.value}}
+                    </div>
+                    <div>
+                        <span class="label-danger" id="productStatusError">Please check product Status!</span>
+                    </div>
+                </div>
+
+                <div class="inputbox">
+                    <label> Product Category </label>
+                    <select name="productCategoryId" id="productCategoryId" class="form-control"
+                        [(ngModel)]="product.productCategoryId">
+                        <option disabled selected value="">Select Category</option>
+                        <option *ngFor="let tempCategory of categoryList" [value]="tempCategory.productCategoryId">
+                            {{ tempCategory.name }}</option>
+                    </select>
+                    <span class="label-danger" id="productCategoryIdError">Please select category!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="text" id="productDescription" name="productDescription"
+                        [(ngModel)]="product.productDescription" placeholder="Product description">
+                    <span class="label-danger" id="productDescriptionError">Not Empty!Maximum 90 letters allowed!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="text" id="discount" name="discount" [(ngModel)]="product.discount"
+                        placeholder="Discount" (keypress)="validateNumber($event)">
+                    <span class="label-danger" id="discountError">Please provide valid discount!</span>
+                </div>
+
+                <div class="inputbox">
+                    <input type="text" id="imageUrl" name="imageUrl" [(ngModel)]="product.imageUrl"
+                        placeholder="Image Url">
+                    <span class="label-danger" id="imageUrlError">Not Empty!Maximum 255 letters allowed!</span>
+                </div>
+
+
+                <div class="inputbox">
+                    <input type="submit" value="Update" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

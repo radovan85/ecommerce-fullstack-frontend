@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<section>
+    <div class="container main-content">
+        <div class="title">
+            <h4>Messages List</h4>
+        </div>
+
+        <table class="table table-bordered" id="listingTable">
+            <thead>
+                <tr>
+                    <th class="text-center">Full name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Phone</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <ng-template ngFor let-tempMessage [ngForOf]="messageList">
+                    <ng-template ngFor let-tempUser [ngForOf]="userList">
+                        <ng-template ngFor let-tempCustomer [ngForOf]="customerList">
+                            <ng-container *ngIf="tempCustomer.userId === tempUser.id">
+                                <ng-container *ngIf="tempMessage.customerId === tempCustomer.customerId">
+                                    <tr>
+                                        <td>{{ tempUser.firstName }} {{ tempUser.lastName }}</td>
+                                        <td>{{ tempUser.email }}</td>
+                                        <td>{{ tempCustomer.customerPhone }}</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Actions</button>
+                                                <div class="dropdown-menu">
+            
+                                                    <button class="dropdown-item btn-options" 
+                                                        (click)="redirectMessageDetails(tempMessage.adminMessageId)">
+                                                        Details
+                                                    </button>
+            
+                                                    <button class="dropdown-item btn-options" 
+                                                        (click)="deleteMessage(tempMessage.adminMessageId)">
+                                                        Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </ng-container>
+                        </ng-template>
+                    </ng-template>
+                </ng-template>
+            </tbody>
+        </table>
+    </div>
+</section>

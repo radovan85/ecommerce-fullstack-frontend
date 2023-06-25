@@ -1,0 +1,47 @@
+section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(-30deg, #03a9f4, 0%, #3a78b7 50%, #262626 50%, #607d8b 100%);
+    animation: animate 10s linear infinite;
+    filter: hue-rotate(120deg);
+}
+
+section a {
+    cursor: pointer;
+    color: grey;
+    transition: color 0.3s;
+}
+
+section a:hover {
+    color:  #c5dfec;
+}
+
+section h4 {
+    font-size: 25px;
+}
+
+.main-content {
+    margin-top: 170px;
+    margin-bottom: 100px;
+    margin-left: 50px;
+}
+
+.title {
+    text-align: center;
+    color: aquamarine;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+@keyframes animate {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+  
+    100% {
+      filter: hue-rotate(360);
+    }
+  }

@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+<section>
+    <div class="container main-content">
+        <div class="title">
+            <h4>products list</h4>
+        </div>
+
+        <div class="mb-4">
+            <button class="btn btn-secondary" (click)="redirectAddProduct()">Add Product</button>
+        </div>
+
+        <table class="table-bordered mb-4" id="listingTable">
+            <thead>
+                <tr>
+                    <th class="text-center">Preview</th>
+                    <th class="text-center">Product Name</th>
+                    <th class="text-center">Category</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <ng-template ngFor let-tempProduct [ngForOf]="productList">
+                    <ng-template ngFor let-tempCategory [ngForOf]="categoryList">
+                        <ng-container *ngIf="tempProduct.productCategoryId === tempCategory.productCategoryId">
+                            <tr>
+                                <td>
+                                    <img (error)="tempProduct.imageUrl = 'https://t3.ftcdn.net/jpg/00/36/94/26/360_F_36942622_9SUXpSuE5JlfxLFKB1jHu5Z07eVIWQ2W.jpg'"
+                                        src="{{ tempProduct.imageUrl }}" style="max-height: 90px;width:110px;" />
+                                </td>
+
+                                <td>{{ tempProduct.productName }}</td>
+                                <td>{{ tempCategory.name }}</td>
+                                <td>
+                                    <span>&euro;&#160;</span>
+                                    <span [innerHTML]="getNumber(tempProduct.productPrice)"></span>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle"
+                                            data-toggle="dropdown">Actions</button>
+                                        <div class="dropdown-menu">
+
+                                            <button class="dropdown-item btn-options"
+                                                (click)="redirectProductDetails(tempProduct.productId)">
+                                                Details
+                                            </button>
+
+                                            <ng-template [ngIf]="hasAuthorityAdmin">
+                                                <button class="dropdown-item btn-options"
+                                                    (click)="redirectUpdateProduct(tempProduct.productId)">
+                                                    Update
+                                                </button>
+
+                                                <button class="dropdown-item btn-options"
+                                                    (click)="deleteProduct(tempProduct.productId)">
+                                                    Delete
+                                                </button>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </ng-template>
+                </ng-template>
+            </tbody>
+        </table>
+    </div>
+</section>

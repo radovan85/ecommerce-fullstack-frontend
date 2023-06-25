@@ -1,0 +1,108 @@
+<app-navbar></app-navbar>
+<section>
+    <div class="container main-content">
+        <div class="page-header title">
+            <h1>Order</h1>
+            <p class="lead">Order and product list</p>
+        </div>
+
+        <div class="row">
+
+            <form class="form-horizontal">
+
+                <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+
+                    <div class="text-center">
+                        <h1>Receipt</h1>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <address>
+                                <strong>Delivery Address</strong><br />
+                                <span>{{ address.address }}</span> <br />
+                                <span>{{ address.city }}</span> <br />
+                                <span>{{ address.state }}</span> <br />
+                                <span>{{ address.country}}</span>
+                                <span>,&#160; {{address.postcode}}</span>
+                                <br />
+                            </address>
+
+                            <span>Order time: {{ order.createdAt }}</span>
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-4">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>#</th>
+                                    <th class="text-center">Price</th>
+                                    <th class="text-center">Discount</th>
+                                    <th class="text-center">Total</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <ng-template ngFor let-tempItem [ngForOf]="orderedItems">
+                                    <tr>
+                                        <td class="col-md-9"><em>{{ tempItem.productName }}</em>
+                                        </td>
+
+                                        <td class="col-md-1" style="text-align: center">
+                                            {{ tempItem.quantity }}
+                                        </td>
+
+                                        <td class="col-md-1" style="text-align: center">
+                                            <span>&euro;</span>
+                                            <span [innerHTML]="getNumber(tempItem.productPrice)"></span>
+                                        </td>
+
+                                        <td class="col-md-1" style="text-align: center">
+                                            <span [innerHTML]="getNumber(tempItem.discount)"></span>
+                                            <span>%</span>
+                                        </td>
+
+                                        <td class="col-md-1" style="text-align: center">
+                                            <span>&euro;</span>
+                                            <span [innerHTML]="getNumber(tempItem.price)"></span>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+
+
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right">
+                                        <h4>Grand Total:
+                                        </h4>
+                                    </td>
+                                    <td class="text-center">
+                                        <h4>
+                                            <strong style="display: inline-flex;">
+                                                <span>&euro;&nbsp;</span>
+                                                <span>{{ orderPrice }}</span>
+                                            </strong>
+                                        </h4>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="text-center">
+            <button class="mr-4" (click)="redirectAllOrders()">
+                All Orders
+            </button>
+
+            <button (click)="deleteOrder(order.orderId)">Remove
+            </button>
+        </div>
+    </div>
+</section>
