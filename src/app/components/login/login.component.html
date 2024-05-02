@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h2>Login</h2>
+    <form id="loginForm" (ngSubmit)="login()">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" required
+                [(ngModel)]="getAuthRequest().username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control" required
+                [(ngModel)]="getAuthRequest().password">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <p id="error-message">Invalid email or password.</p>
+        <div class="register-link">
+            <a (click)="redirectRegister()">Create an account</a>
+        </div>
+    </form>
+</div>

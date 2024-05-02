@@ -1,0 +1,19 @@
+<div class="header">
+    <a href="#"> <img src="assets/images/logo.png" alt="logo image" class="logo" /> </a>
+    <input type="checkbox" id="chk" class="chk-btn" />
+    <ul class="menu">
+        <li><a (click)="redirectHome()"> Home </a></li>
+        <li *ngIf="getHasAuthorityAdmin()"><a (click)="redirectAdmin()"> Admin </a></li>
+        <li *ngIf="getHasAuthorityUser()">
+            <a (click)="redirectAllProducts()"> Products </a>
+            <a (click)="redirectCart()"> Cart </a>
+        </li>
+        <li *ngIf="!getIsAuthenticated()"><a (click)="redirectLogin()"> Login </a></li>
+        <li *ngIf="getIsAuthenticated()" class="dropdown">
+            <a>{{ getAuthUser().email }}</a>
+            <div class="dropdown-content">
+                <a (click)="logout()"> Logout </a>
+            </div>
+        </li>
+    </ul>
+</div>
